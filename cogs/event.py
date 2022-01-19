@@ -12,11 +12,10 @@ class Events(commands.Cog):
 
 
     @commands.Cog.listener()
-    @watch(path='commands')
+    @watch(path='cogs')
     async def on_ready(self):
         result = pyfiglet.figlet_format("- NENDO -") 
-        #await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"n!help - {len(client.guilds)} guilds"))
-        await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Nendo V2 is coming..."))
+        await self.client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"n!help - {len(self.client.guilds)} guilds"))
 
         print('------')
         print(result)
@@ -25,6 +24,8 @@ class Events(commands.Cog):
         print("- ", self.client.user.id)
         print("Your bot is up !")
         print('------')
+
+        self.client.load_extension('dismusic')
 
 
     @commands.Cog.listener()

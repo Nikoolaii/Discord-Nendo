@@ -53,7 +53,7 @@ class Help(commands.Cog):
             color=0xe4a3f3)
         page4.set_image(url="https://i.imgur.com/6CkbQkt.gif")
         #page4.add_field(name=f"{prefixint}osu",value="Pour avoir tes stats osu!. [NOT WORKING]",inline=False)
-        #page4.add_field(name=f"{prefixint}fight",value="Pour te battre avec la personne mentionée. [NOT WORKING]",inline=False)
+        page4.add_field(name=f"{prefixint}fight",value="Pour te battre avec la personne mentionée.",inline=False)
         page4.add_field(name=f"{prefixint}apex",value=f"Pour avoir tes stats Apex Legends. `[{prefixint}apex (Platforme) (Pseudo)]`",inline=False)
         page4.add_field(name=f"{prefixint}pof",value=f"Pour faire un pile ou face, un super moyen de décider.",inline=False)
 

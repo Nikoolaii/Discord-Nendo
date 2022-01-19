@@ -38,8 +38,8 @@ class Image(commands.Cog):
         embed = discord.Embed(
             color=0xe4a3f3)
         embed.set_author(name=f"Icon demandé par: **{ctx.message.author}**")
-        embed.set_image(url=ctx.guild.icon)
-        embed.set_thumbnail(url=ctx.author.avatar)
+        embed.set_image(url=ctx.guild.icon_url)
+        embed.set_thumbnail(url=ctx.author.avatar_url)
 
         await ctx.send(embed=embed)
 
@@ -49,7 +49,7 @@ class Image(commands.Cog):
         if not member:
             member = ctx.author
 
-        userAvatar = member.avatar
+        userAvatar = member.avatar_url
 
         embed = discord.Embed(color=0xcc3399)
         embed.set_author(name=f"Photo de profil demandée par: {ctx.message.author}")

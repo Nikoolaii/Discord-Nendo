@@ -23,8 +23,8 @@ class Info(commands.Cog):
         embed2.add_field(name='**Nombre de Membre :**', value=ctx.guild.member_count, inline=False)
         embed2.add_field(name='**Bots :**', value=(', '.join(list_of_bots)))
         embed2.add_field(name='**Crée le :**', value=ctx.guild.created_at.__format__("Le **%d/%m/%Y** à **%H:%M:%S**"), inline=False)
-        embed2.set_thumbnail(url=ctx.guild.icon)
-        embed2.set_author(name=ctx.author.name, icon_url=ctx.author.avatar)
+        embed2.set_thumbnail(url=ctx.guild.icon_url)
+        embed2.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
         await ctx.send(embed=embed2)
 
     @commands.command(pass_context = True)
@@ -40,7 +40,7 @@ class Info(commands.Cog):
         embed.add_field(name='**Date d\'arrivée :**', value = f'{user.joined_at.strftime("Le **%d/%m/%Y** à **%H:%M:%S**")}',inline = False)
         embed.add_field(name = "**Status :**",value = f"{str(user.status).title()}")
         embed.add_field(name = "**Activité :**",value = f"{str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}")
-        embed.set_thumbnail(url=user.avatar)
+        embed.set_thumbnail(url=user.avatar_url)
         await ctx.send(embed = embed)
 
     @commands.command(pass_context = True)
