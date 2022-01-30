@@ -43,7 +43,7 @@ class Fun(commands.Cog):
         
         
         await ctx.message.delete()
-        await ctx.send(f"Oh mais que vois-je ? {ctx.author.mention} viens de proposer un duel à {member.mention}")
+        messsage = await ctx.send(f"Oh mais que vois-je ? {ctx.author.mention} viens de proposer un duel à {member.mention}")
         time.sleep(2)
         await ctx.send(embed=fight)
         

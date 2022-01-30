@@ -22,6 +22,7 @@ class Events(commands.Cog):
         print('Logged in as')
         print("- ", self.client.user)
         print("- ", self.client.user.id)
+        print("- ", len(self.client.guilds), "Guilds")
         print("Your bot is up !")
         print('------')
 

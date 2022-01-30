@@ -47,8 +47,8 @@ class Info(commands.Cog):
     async def botinfo(self,ctx):
         embed = discord.Embed(title="**__Information du bot__**", description= f"Voici les informations de Nendo !",color=0xe4a3f3)
         embed.add_field(name='**Développeur**',value=f'**┕**<@226657385211494401>',inline=True)
-        embed.add_field(name='**Paramètre**',value= f'**┕**``{round(self.client.latency * 1000)} ms``\n**┕**``V2.0.0``\n**┕**``{prefixint}help``\n**┕**``discord.gg/PeRjhJa``\n**┕**``Bot sur {len(self.client.guilds)} serveurs``',inline=True)
-        embed.set_thumbnail(url=ctx.guild.icon)
+        embed.add_field(name='**Paramètre**',value= f'**┕**``{round(self.client.latency,3)}ms``\n**┕**``V2.0.0``\n**┕**``{prefixint}help``\n**┕**``discord.gg/PeRjhJa``\n**┕**``Bot sur {len(self.client.guilds)} serveurs``',inline=True)
+        embed.set_thumbnail(url=ctx.guild.icon_url)
         await ctx.send(embed=embed)    
         
         
