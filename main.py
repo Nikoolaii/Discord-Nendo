@@ -25,4 +25,4 @@ client.lava_nodes = [
 
 prefixint = "n!"
 
-client.run("NzU4MjgyNTkyMDI1NTc1NDQ1.X2srsg.YwtpJV5Q9eTFelLsFDQOlftRGuU")
+client.run("")
