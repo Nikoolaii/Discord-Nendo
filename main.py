@@ -25,4 +25,8 @@ client.lava_nodes = [
 
 prefixint = "n!"
 
-client.run("NzU4MjgyNTkyMDI1NTc1NDQ1.X2srsg.ZTBkEGRgS7CjY4jNsw2YF8ggyg0")
+<<<<<<< HEAD
+client.run("")
+=======
+client.run("")
+>>>>>>> 58301dddc63139ed3791a6b86b4de12e8ba607a6
