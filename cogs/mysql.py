@@ -52,9 +52,9 @@ class Mysql(commands.Cog):
         query = ("SELECT msg FROM phrases WHERE servid = %s")
         srvid = ctx.message.guild.id
         cursor.execute(query,(srvid,))
-        #record = cursor.fetchone()
         for(msg) in cursor:
-            await ctx.send(msg)
+            str = ''.join(msg)
+            await ctx.send(str)
 
 def setup(client):
     client.add_cog(Mysql(client))
