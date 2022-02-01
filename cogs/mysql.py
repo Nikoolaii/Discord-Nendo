@@ -36,17 +36,25 @@ class Mysql(commands.Cog):
     except Error as e:
         print("Error while connecting to MySQL", e)
 
-    connection = mysql.connector.connect(host=db_host,
-                                        database=db_db,
-                                        user=db_user,
-                                        password=db_password)
-
     @commands.command(pass_context = True)
     async def sendmsg(self,ctx):
+        load_dotenv()
+        db_host = os.getenv("DB_HOST")
+        db_db = os.getenv("DB_DB")
+        db_user = os.getenv("DB_USER")
+        db_password = os.getenv("DB_PASSWORD")
+        connection = mysql.connector.connect(host=db_host,
+                                    database=db_db,
+                                    user=db_user,
+                                    password=db_password)
+        
         cursor = connection.cursor()
-        cursor.execute("SELECT message FROM phrases WHERE servid = ?",ctx.message.guild.id)
-        record = cursor.fetchone()
-        await ctx.send(record)
+        query = ("SELECT msg FROM phrases WHERE servid = %s")
+        srvid = ctx.message.guild.id
+        cursor.execute(query,(srvid,))
+        #record = cursor.fetchone()
+        for(msg) in cursor:
+            await ctx.send(msg)
 
 def setup(client):
     client.add_cog(Mysql(client))
