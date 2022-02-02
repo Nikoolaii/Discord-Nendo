@@ -56,5 +56,35 @@ class Mysql(commands.Cog):
             str = ''.join(msg)
             await ctx.send(str)
 
+    @commands.command(pass_context = True)
+    async def setmsg(self,ctx,*,argumentphrase):
+        load_dotenv()
+        db_host = os.getenv("DB_HOST")
+        db_db = os.getenv("DB_DB")
+        db_user = os.getenv("DB_USER")
+        db_password = os.getenv("DB_PASSWORD")
+        connection = mysql.connector.connect(host=db_host,
+                                    database=db_db,
+                                    user=db_user,
+                                    password=db_password)
+        
+        cursor = connection.cursor()
+        query = ("SELECT count(msg) FROM phrases WHERE servid = %s")
+        srvid = ctx.message.guild.id
+        cursor.execute(query,(srvid,))
+        for(msg) in cursor:
+            if msg[0] == 0:
+                query = ("INSERT INTO phrases (servid,msg) VALUES ('%s','%s')")
+                srvid = ctx.message.guild.id
+                cursor.execute(query,(srvid,argumentphrase,))
+                connection.commit()
+                await ctx.send(f":white_check_mark: Message défini avec succès")
+            else:
+                query = ("UPDATE phrases SET msg = %s WHERE servid = %s")
+                srvid = ctx.message.guild.id
+                cursor.execute(query,(argumentphrase, srvid,))
+                connection.commit()
+                await ctx.send(f":white_check_mark: Message défini avec succès")
+
 def setup(client):
     client.add_cog(Mysql(client))
