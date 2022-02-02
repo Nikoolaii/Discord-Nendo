@@ -74,7 +74,7 @@ class Mysql(commands.Cog):
         cursor.execute(query,(srvid,))
         for(msg) in cursor:
             if msg[0] == 0:
-                query = ("INSERT INTO phrases (servid,msg) VALUES ('%s','%s')")
+                query = ("INSERT INTO phrases (servid,msg) VALUES (%s,%s)")
                 srvid = ctx.message.guild.id
                 cursor.execute(query,(srvid,argumentphrase,))
                 connection.commit()
