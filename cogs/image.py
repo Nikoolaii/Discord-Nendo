@@ -3,6 +3,7 @@ from discord.ext import commands
 import giphy_client
 from giphy_client.rest import ApiException
 import random
+import nekos
 prefixint = "n!"
 
 class Image(commands.Cog):

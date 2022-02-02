@@ -36,6 +36,7 @@ class Help(commands.Cog):
         page2.add_field(name=f"{prefixint}botinfo",value="Pour obtenir des informations sur le bot.",inline=False)
         page2.add_field(name=f"{prefixint}bypasslink",value="Pour bypass un lien adfly ou linkvertise par exemple.",inline=False)
         #page2.add_field(name=f"{prefixint}suggest",value="To send a suggestion to the bot maker.",inline=False)
+        page2.add_field(name=f"{prefixint}setmsg",value=f"Commande pour définir un message qui pourras être utilisé avec la commande {prefixint}sendmessage")
 
         page3 = discord.Embed (
             title = f"Panneau d'aide • Prefix : `{prefixint}`",
