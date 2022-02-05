@@ -57,6 +57,7 @@ class Mysql(commands.Cog):
             await ctx.send(str)
 
     @commands.command(pass_context = True)
+    @commands.has_permissions(administrator = True)
     async def setmsg(self,ctx,*,argumentphrase):
         load_dotenv()
         db_host = os.getenv("DB_HOST")
