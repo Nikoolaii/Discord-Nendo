@@ -3,7 +3,7 @@ from discord.ext import commands
 import giphy_client
 from giphy_client.rest import ApiException
 import random
-import nekos
+import requests
 prefixint = "n!"
 
 class Image(commands.Cog):
@@ -55,8 +55,35 @@ class Image(commands.Cog):
         embed = discord.Embed(color=0xcc3399)
         embed.set_author(name=f"Photo de profil demandée par: {ctx.message.author}")
         embed.set_image(url=userAvatar)
-
         await ctx.send(embed=embed)
+
+    @commands.command(pass_context = True , aliases=['ravatar'])
+    async def nekosimg(self, ctx, endpoint):
+        valid = False
+        endpointlist= ["tickle", "slap", "poke", "pat", "neko", "meow", "kiss", "hug", "fox_girl", "feed", "cuddle", "ngif", "smug", "kemonomimi", "baka", "woof", "wallpaper", "goose", "waifu", "avatar"]
+        for i in range(len(endpointlist)):
+            if endpoint == endpointlist[i]:
+                valid = True
+
+        if valid == True :
+            requete = requests.get(f"https://nekos.life/api/v2/img/{endpoint}")
+            soup = str(requete.content)
+            soup = soup[10:-5]
+
+            sendembed = discord.Embed(color=0xcc3399)
+            sendembed.set_author(name=f"Voici ton image générée aléatoirement !")
+            sendembed.set_image(url=soup)
+            await ctx.send(embed=sendembed)
+        else:
+            listembed = discord.Embed(color=0xcc3399)
+            listembed.set_author(name=f"Mauvaise argument, voici la liste des arguments corrects !")
+            listembed.add_field(name="Voici tous les arguments corrects", value=f"** **")
+            listembed.add_field(name="** **", value=f"** **", inline= False)
+            listembed.add_field(name="** **", value=f"tickle\nslap\npoke\npat\nneko")
+            listembed.add_field(name="** **", value=f"meow\nhug\nfox_girl\nfeed\ncuddle")
+            listembed.add_field(name="** **", value=f"ngif\nsmug\nkemonomimi\nbaka\nwoof")
+            listembed.add_field(name="** **", value=f"kiss\nwallpaper\ngoose\nwaifu\navatar")
+            await ctx.send(embed=listembed)
 
 def setup(client):
     client.add_cog(Image(client))

@@ -10,3 +10,4 @@ dismusic
 mysql.connector
 python-dotenv
 nekos.py
+request
