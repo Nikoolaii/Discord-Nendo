@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-import asyncio
+from discord_slash import cog_ext
 prefixint = "n!"
 
 class Help(commands.Cog):
@@ -8,7 +8,7 @@ class Help(commands.Cog):
     def __init__(self, client):
         self.client = client   
             
-    @commands.command(pass_context = True)
+    @cog_ext.cog_slash(name="help")
     async def help(self,ctx):
         page1 = discord.Embed(
             title = f"Panneau d'aide • Prefix : `{prefixint}`",

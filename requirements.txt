@@ -11,3 +11,4 @@ mysql.connector
 python-dotenv
 nekos.py
 request
+discord-py-slash-command
