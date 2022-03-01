@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 from discord.ext import commands
 from cogwatch import watch
 
-client = commands.Bot(command_prefix= "n!")
+prefixint = "n!"
+
+client = commands.Bot(command_prefix= prefixint)
 client.remove_command('help')
 
 for filename in os.listdir('./cogs'):
@@ -23,7 +25,6 @@ for filename in os.listdir('./cogs'):
     }
 ]
 
-prefixint = "n!"
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
