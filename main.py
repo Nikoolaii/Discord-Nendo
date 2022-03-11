@@ -1,11 +1,16 @@
-import discord
+from discord import Intents
 import os
 from dotenv import load_dotenv
 from discord.ext import commands
 from cogwatch import watch
+from discord_slash import SlashCommand
 
-client = commands.Bot(command_prefix= "n!")
+prefixint = "n!"
+
+client = commands.Bot(command_prefix= prefixint, self_bot = True, intents = Intents.default())
 client.remove_command('help')
+
+slash = SlashCommand(client, sync_commands = True)
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
@@ -23,7 +28,6 @@ for filename in os.listdir('./cogs'):
     }
 ]
 
-prefixint = "n!"
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
