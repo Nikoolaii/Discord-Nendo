@@ -8,7 +8,7 @@ class Help(commands.Cog):
     def __init__(self, client):
         self.client = client   
             
-    @cog_ext.cog_slash(name="help")
+    @cog_ext.cog_slash(name="help", description="📚 Afficher la liste de toutes les commandes du bot.")
     async def help(self,ctx):
         page1 = discord.Embed(
             title = f"Panneau d'aide • Prefix : `{prefixint}`",
